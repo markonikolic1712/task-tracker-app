@@ -1,17 +1,16 @@
 
 https://youtu.be/l785ayKzsqs
 
+----------------------------------------------------------------------------------------------------------------
 REST API za task liste
---------------------------------------------------------------------
 GET 	/task-lists						vraca listu task listi
 POST 	/task-lists						kreira task listu
 GET		/task-lists/{task_list_id}		uzimanje task liste po id-u
 PUT		/task-lists/{task_list_id}		update task liste po id-u
 DELETE	/task-lists/{task_list_id}		brisanje task liste po id-u
 
-
+----------------------------------------------------------------------------------------------------------------
 REST API za taskove
---------------------------------------------------------------------
 GET 	/task-lists/{task_list_id}/tasks			vraca listu taskova za jednu task listu po task_list_id
 POST 	/task-lists/{task_list_id}/tasks			kreira task i dpdaje ga u tadk listu
 GET		/task-lists/{task_list_id}/tasks/{task_id}	uzimanje taska po id-u
@@ -19,7 +18,9 @@ PUT		/task-lists/{task_list_id}/tasks/{task_id}	update taska po id-u
 DELETE	/task-lists/{task_list_id}/tasks/{task_id}	brisanje taska po id-u
 
 
---------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------------------------------
 Kreiranje spring boot projekta
 - Java 21
 - dependencies:
@@ -27,6 +28,40 @@ Kreiranje spring boot projekta
 	- PostgreSQL Driver
 	- H2 Database
 	- Spring Web
+
+
+----------------------------------------------------------------------------------------------------------------
+Prilikom pokretanja testova koristice se H2 baza pa se zato <scope>runtime</scope> manja u <scope>test</scope>.
+
+Za development irad aplikacije koristi se PostgreSQL iz dockera.
+
+- 'docker --version' - proverava se da li je na racunaru instaliran docker
+
+U root-u projekta se kreira docker-compose.yml fajl u kojem je:
+docker-compose.yml - pocetak
+services:
+	# Our PostgreSQL database
+	db:
+		# The docker image of postgres - we are using atest
+		image: postgres:latest
+		# the ports to xpose to the host container
+		# 5432 the defauilt PostgreSQL port
+		ports:
+			- 5432:5432
+		# if we accidentaly kill the running container, docker compose will restart it
+		restart: always
+		# The PostgreSQL Dosker container uses enviroment variables to read configuration. Here we set the password
+		# Do not store plain text passwords in source control
+		environment:
+			POSTGRES_PASSWORD: changemeinprod!
+docker-compose.yml kraj
+
+U terminalu se pozicioniramo u root projekta u kome je i docker-compose fajl pa se sa komandom 'docker-compose up' pkrece postgres docker kontejner.
+
+min 34:30
+
+
+
 
 
 

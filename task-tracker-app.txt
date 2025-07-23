@@ -1,0 +1,51 @@
+
+https://youtu.be/l785ayKzsqs
+
+REST API za task liste
+--------------------------------------------------------------------
+GET 	/task-lists						vraca listu task listi
+POST 	/task-lists						kreira task listu
+GET		/task-lists/{task_list_id}		uzimanje task liste po id-u
+PUT		/task-lists/{task_list_id}		update task liste po id-u
+DELETE	/task-lists/{task_list_id}		brisanje task liste po id-u
+
+
+REST API za taskove
+--------------------------------------------------------------------
+GET 	/task-lists/{task_list_id}/tasks			vraca listu taskova za jednu task listu po task_list_id
+POST 	/task-lists/{task_list_id}/tasks			kreira task i dpdaje ga u tadk listu
+GET		/task-lists/{task_list_id}/tasks/{task_id}	uzimanje taska po id-u
+PUT		/task-lists/{task_list_id}/tasks/{task_id}	update taska po id-u
+DELETE	/task-lists/{task_list_id}/tasks/{task_id}	brisanje taska po id-u
+
+
+--------------------------------------------------------------------
+Kreiranje spring boot projekta
+- Java 21
+- dependencies:
+	- Spring Data JPA
+	- PostgreSQL Driver
+	- H2 Database
+	- Spring Web
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

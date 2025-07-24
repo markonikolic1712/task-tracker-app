@@ -58,7 +58,32 @@ docker-compose.yml kraj
 
 U terminalu se pozicioniramo u root projekta u kome je i docker-compose fajl pa se sa komandom 'docker-compose up' pkrece postgres docker kontejner.
 
-min 34:30
+U application.properties se dodaje setovanje za postgres bazu:
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.datasource.url=jdbc:postgresql://localhost:5432/postgres
+spring.datasource.username=postgres
+spring.datasource.password=changemeinprod!
+spring.jpa.hibernate.ddl-auto=update
+
+Za testove ce se koristiti H2 baza pa se u folderu test kreira folder resources i u njemu application.properties i u njega se dodaju setovanja za H2 bazu:
+spring.datasource.driver-class-name=org.h2.Driver
+spring.datasource.url=jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+spring.datasource.username=sa
+spring.datasource.password=sa
+
+spring.jpa.hibernate.ddl-auto=create-drop
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+
+
+----------------------------------------------------------------------------------------------------------------
+Pokretanje frontenda:
+- skine se kod sa frontendom i on je u folderu 'tasks-fe'
+- u termnalu se pozicioniramo u tasks-fe folder pa"
+    - npm install
+    - npm run dev
+    - aplikacija ce biti dostupna na localhost:5173
+
+min 41
 
 
 
